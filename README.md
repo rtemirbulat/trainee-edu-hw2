@@ -13,3 +13,4 @@ Choose the [name] [data type], [access modifier] and [variable type] carefully, 
 There should be the ability to create a Ticket instance with all parameters initialised and also a limited one - [concert hall], [event code] and
 [time].
 <h2>backlog: getters, setters, testing</h2>
+<img src="https://github.com/rtemirbulat/trainee-edu-hw2/blob/master/all%20tickets.png"/>
