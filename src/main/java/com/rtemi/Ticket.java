@@ -45,8 +45,8 @@ public class Ticket {
         this.ticketPurchaseTime = System.currentTimeMillis() / 1000L;
         this.isPromo = isPromo;
         setSector(sector);
-        this.maxWeight = maxWeight;
-        this.ticketPrice = ticketPrice;
+        setMaxWeight(maxWeight);
+        setTicketPrice(ticketPrice);
     }
 
     public Ticket(String concertHall, int eventCode) {
@@ -54,12 +54,30 @@ public class Ticket {
         this.eventCode = Integer.parseInt(String.valueOf(eventCode).substring(0, 3));
         this.ticketPurchaseTime = System.currentTimeMillis() / 1000L;
     }
+    // Assuming that we dont know exceptions YET
+    public void setMaxWeight(BigDecimal maxWeight){
+        if(maxWeight!=null){
+            this.maxWeight = maxWeight.setScale(WEIGHT_PRECISION, RoundingMode.HALF_UP);
+        }
+        else{
+            System.out.println("Weight is null, no rounding will be performed");
+        }
+    }
+    // Assuming that we dont know exceptions YET
+    public void setTicketPrice(BigDecimal ticketPrice) {
+        if(ticketPrice!=null){
+            this.ticketPrice = ticketPrice.setScale(PRICE_PRECISION,RoundingMode.HALF_UP);
+        }
+        else{
+            System.out.println("Price is null, no rounding will be performed");
+        }
+    }
 
     public void setSector(char sector) {
         if (sector == 'A' || sector == 'B' || sector == 'C') {
             this.sector = sector;
         } else {
-            throw new IllegalArgumentException("Sector must be 'A', 'B', or 'C'");
+            System.out.println("Sector must be one of following: A, B, C");
         }
     }
 
@@ -72,8 +90,8 @@ public class Ticket {
                 ", ticketPurchaseTime - " + DateFormat.getInstance().format(ticketPurchaseTime) +
                 ", isPromo - " + isPromo +
                 ", sector - " + sector +
-                ", maxWeight - " + maxWeight.setScale(WEIGHT_PRECISION, RoundingMode.HALF_UP) +
-                ", ticketPrice - " + ticketPrice.setScale(PRICE_PRECISION,RoundingMode.HALF_UP) +
+                ", maxWeight - " +  maxWeight +
+                ", ticketPrice - " + ticketPrice +
                 '}';
     }
 }

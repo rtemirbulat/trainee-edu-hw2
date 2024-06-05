@@ -1,0 +1,10 @@
+
+i
+java:S2111"!Use "BigDecimal.valueOf" instead.(µ®Üõùÿÿÿÿ8§Øß¤þ1J$95bf4404-410e-4b33-a6ff-e8ec2a680cbd
+c
+java:S2111	"!Use "BigDecimal.valueOf" instead.(ˆžÔ-8°Øß¤þ1J$7147d797-80dc-479a-b973-e236ab940fa6
+r	java:S106"+Replace this use of System.out by a logger.(›¤µžÿÿÿÿÿ8ëÛÀ¤þ1J$61816928-eb3a-4217-aef4-7a688c3c7c8e
+r	java:S106"+Replace this use of System.out by a logger.(´é ºÿÿÿÿÿ8Ü–³Ãþ1J$e6aad0a1-e273-4eb0-b1d3-6b893d7517f7
+m	java:S106"+Replace this use of System.out by a logger.(Ú§ÿž8Þ–³Ãþ1J$e89226cb-d28a-45ca-b28d-9c3469f3ef88
+—
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ÇéŽ»8Í¬ö¤þ1J$23f0a205-6bb7-4d10-9729-930b0e311f81
