@@ -3,11 +3,11 @@ package com.rtemi;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DateFormat;
-import java.util.Date;
+import java.time.Instant;
 
 /*TO-DO:
-Create 2 Java classes -“Ticket” and “TicketService”
-The “Ticket" class should have the following variables:
+Create 2 Java classes -Ticket and TicketService
+The Ticket class should have the following variables:
 ○ ID (max 4 digits and/or chars)
 ○ concert hall (max 10 chars)
 ○ event code (3 digits)
@@ -39,22 +39,22 @@ public class Ticket {
     }
 
     public Ticket(String id, String concertHall, int eventCode, boolean isPromo, char sector, BigDecimal maxWeight, BigDecimal ticketPrice) {
-        this.id = id.length() > ID_MAX_DIGITS_ALLOWED ? id.substring(0, ID_MAX_DIGITS_ALLOWED) : id;
-        this.concertHall = concertHall.length() > HALL_NAME_MAX_CHARS ? concertHall.substring(0, HALL_NAME_MAX_CHARS) : concertHall;
-        this.eventCode = Integer.parseInt(String.valueOf(eventCode).substring(0, 3));
-        this.ticketPurchaseTime = System.currentTimeMillis() / 1000L;
-        this.isPromo = isPromo;
+        setId(id);
+        setConcertHall(concertHall);
+        setEventCode(eventCode);
+        setPromo(isPromo);
         setSector(sector);
+        setTicketPurchaseTime(Instant.now().getEpochSecond());
         setMaxWeight(maxWeight);
         setTicketPrice(ticketPrice);
     }
 
     public Ticket(String concertHall, int eventCode) {
-        this.concertHall = concertHall.length() > HALL_NAME_MAX_CHARS ? concertHall.substring(0, HALL_NAME_MAX_CHARS) : concertHall;
-        this.eventCode = Integer.parseInt(String.valueOf(eventCode).substring(0, 3));
-        this.ticketPurchaseTime = System.currentTimeMillis() / 1000L;
+        setConcertHall(concertHall);
+        setTicketPurchaseTime(Instant.now().getEpochSecond());
+        setEventCode(eventCode);
     }
-    // Assuming that we dont know exceptions YET
+    // Assuming that we don't know exceptions YET
     public void setMaxWeight(BigDecimal maxWeight){
         if(maxWeight!=null){
             this.maxWeight = maxWeight.setScale(WEIGHT_PRECISION, RoundingMode.HALF_UP);
@@ -63,7 +63,7 @@ public class Ticket {
             System.out.println("Weight is null, no rounding will be performed");
         }
     }
-    // Assuming that we dont know exceptions YET
+    // Assuming that we don't know exceptions YET
     public void setTicketPrice(BigDecimal ticketPrice) {
         if(ticketPrice!=null){
             this.ticketPrice = ticketPrice.setScale(PRICE_PRECISION,RoundingMode.HALF_UP);
@@ -73,12 +73,64 @@ public class Ticket {
         }
     }
 
+    public void setTicketPurchaseTime(long ticketPurchaseTime) {
+        this.ticketPurchaseTime = ticketPurchaseTime;
+    }
+
     public void setSector(char sector) {
         if (sector == 'A' || sector == 'B' || sector == 'C') {
             this.sector = sector;
         } else {
             System.out.println("Sector must be one of following: A, B, C");
         }
+    }
+
+    public void setId(String id) {
+        this.id = id.length() > ID_MAX_DIGITS_ALLOWED ? id.substring(0, ID_MAX_DIGITS_ALLOWED) : id;
+    }
+
+    public void setConcertHall(String concertHall) {
+        this.concertHall = concertHall.length() > HALL_NAME_MAX_CHARS ? concertHall.substring(0, HALL_NAME_MAX_CHARS) : concertHall;
+    }
+
+    public void setEventCode(int eventCode) {
+        this.eventCode = Integer.parseInt(String.valueOf(eventCode).substring(0, 3));
+    }
+
+    public void setPromo(boolean promo) {
+        isPromo = promo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getConcertHall() {
+        return concertHall;
+    }
+
+    public int getEventCode() {
+        return eventCode;
+    }
+
+    public long getTicketPurchaseTime() {
+        return ticketPurchaseTime;
+    }
+
+    public boolean isPromo() {
+        return isPromo;
+    }
+
+    public char getSector() {
+        return sector;
+    }
+
+    public BigDecimal getMaxWeight() {
+        return maxWeight;
+    }
+
+    public BigDecimal getTicketPrice() {
+        return ticketPrice;
     }
 
     @Override
