@@ -26,5 +26,12 @@ public class TicketService {
             newTicket.setMaxWeight(price);
         }
     }
-
+    public Ticket getTicketById(String id){
+        for (Ticket ticket: storage) {
+            if(ticket.getId().equals(id)){
+                return ticket;
+            }
+        }
+        return null;
+    }
 }
