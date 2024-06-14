@@ -81,6 +81,10 @@ public class Ticket {
         }
     }
 
+    public char getSector() {
+        return sector;
+    }
+
     @Override
     public String toString() {
         return "Ticket " +
