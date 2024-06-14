@@ -1,37 +1,32 @@
 package com.rtemi;
-import com.rtemi.Ticket;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class TicketService {
-    public ArrayList<Ticket> storage; // should be an interface
+    static List<Ticket> tickets;
+
     public static void main(String[] args) {
         BigDecimal weight = new BigDecimal(4.200);
         BigDecimal price = new BigDecimal(99.99);
+        Ticket newEmptyTicket = new Ticket();
+        Ticket nonEmptyTicket = new Ticket("123", "Plaza", 123, true, 'C', weight, price);
+        Ticket limitedTicket = new Ticket("concertHall1", 123);
+        System.out.println(newEmptyTicket);
+        System.out.println(nonEmptyTicket);
+        System.out.println(limitedTicket);
 
-        //Ticket Generator (no-nulls)
-        for (int i = 0; i <= 10; i++) {
-            Random random = new Random();
-            char[] sectors = {'A','B','C'};
-            Ticket newTicket = new Ticket();
-            newTicket.setId(String.valueOf(100 + random.nextInt(900)));
-            newTicket.setConcertHall("Abu-Dhabi Concert Hall");
-            newTicket.setEventCode(100 + random.nextInt(900));
-            newTicket.setPromo(random.nextBoolean());
-            newTicket.setSector(sectors[random.nextInt(sectors.length)]);
-            newTicket.setMaxWeight(weight);
-            newTicket.setMaxWeight(price);
-        }
+        tickets = Arrays.asList(nonEmptyTicket, newEmptyTicket, limitedTicket);
+
+        System.out.println("FIND TICKET BY SECTOR: " + getTicketByStadiumSector('C'));
+
     }
-    public Ticket getTicketById(String id){
-        for (Ticket ticket: storage) {
-            if(ticket.getId().equals(id)){
-                return ticket;
-            }
-        }
-        return null;
+
+    public static Ticket getTicketByStadiumSector(char sector) {
+        return tickets.stream()
+                .filter(ticket -> sector == ticket.getSector())
+                .findAny()
+                .orElse(null);
     }
 }
