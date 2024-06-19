@@ -1,10 +1,10 @@
 package com.rtemi.model;
 
-public abstract class AbstractClassID {
+public abstract class TicketUID {
     private int classId;
-    protected AbstractClassID(){
+    protected TicketUID(){
     }
-    protected AbstractClassID(int classId) {
+    protected TicketUID(int classId) {
         this.classId = classId;
     }
 

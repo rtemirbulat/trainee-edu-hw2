@@ -1,5 +1,6 @@
 package com.rtemi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rtemi.annotation.NullableWarning;
 import com.rtemi.interfaces.Printable;
 import com.rtemi.interfaces.Shareable;
@@ -9,8 +10,8 @@ import java.math.RoundingMode;
 import java.time.Instant;
 import java.util.Objects;
 
-
-public class Ticket extends AbstractClassID  implements Printable, Shareable {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ConcertTicket extends TicketUID implements Printable, Shareable {
     private static final int ID_MAX_DIGITS_ALLOWED = 4;
     private static final int HALL_NAME_MAX_CHARS = 10;
     private static final int PRICE_PRECISION = 9;
@@ -28,10 +29,10 @@ public class Ticket extends AbstractClassID  implements Printable, Shareable {
     private BigDecimal ticketPrice;
 
 
-    public Ticket() {
+    public ConcertTicket() {
     }
 
-    public Ticket(String ticketId, String concertHall, int eventCode, boolean isPromo, char sector, BigDecimal maxWeight, BigDecimal ticketPrice) {
+    public ConcertTicket(String ticketId, String concertHall, int eventCode, boolean isPromo, char sector, BigDecimal maxWeight, BigDecimal ticketPrice) {
         this.ticketId = ticketId.length() > ID_MAX_DIGITS_ALLOWED ? ticketId.substring(0, ID_MAX_DIGITS_ALLOWED) : ticketId;
         this.concertHall = concertHall.length() > HALL_NAME_MAX_CHARS ? concertHall.substring(0, HALL_NAME_MAX_CHARS) : concertHall;
         this.eventCode = Integer.parseInt(String.valueOf(eventCode).substring(0, 3));
@@ -43,7 +44,7 @@ public class Ticket extends AbstractClassID  implements Printable, Shareable {
 
     }
 
-    public Ticket(String concertHall, int eventCode) {
+    public ConcertTicket(String concertHall, int eventCode) {
         this.concertHall = concertHall.length() > HALL_NAME_MAX_CHARS ? concertHall.substring(0, HALL_NAME_MAX_CHARS) : concertHall;
         this.eventCode = Integer.parseInt(String.valueOf(eventCode).substring(0, 3));
         setTicketPurchaseTime();
@@ -108,8 +109,8 @@ public class Ticket extends AbstractClassID  implements Printable, Shareable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Ticket)) return false;
-        Ticket ticket = (Ticket) o;
+        if (!(o instanceof ConcertTicket)) return false;
+        ConcertTicket ticket = (ConcertTicket) o;
         return eventCode == ticket.eventCode &&
                 ticketPurchaseTime == ticket.ticketPurchaseTime &&
                 time == ticket.time &&

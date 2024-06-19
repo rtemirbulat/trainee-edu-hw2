@@ -1,8 +1,8 @@
 package com.rtemi.services;
 
 import com.rtemi.interfaces.Printable;
-import com.rtemi.model.AbstractClassID;
-import com.rtemi.model.Ticket;
+import com.rtemi.model.TicketUID;
+import com.rtemi.model.ConcertTicket;
 import com.rtemi.model.entity.Admin;
 import com.rtemi.model.entity.User;
 
@@ -11,15 +11,15 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-public class TicketService extends AbstractClassID implements Printable {
-    private static List<Ticket> tickets;
+public class TicketService extends TicketUID implements Printable {
+    private static List<ConcertTicket> tickets;
 
     public static void main(String[] args) {
 
         BigDecimal weight = new BigDecimal(4.200);
         BigDecimal price = new BigDecimal(99.99);
 
-        Ticket nonEmptyTicket = new Ticket("123", "Plaza", 123, true, 'C', weight, price);
+        ConcertTicket nonEmptyTicket = new ConcertTicket("123", "Plaza", 123, true, 'C', weight, price);
         tickets = Arrays.asList(nonEmptyTicket);
 
         // Setting ID to ANY class (goal 1)
@@ -60,7 +60,7 @@ public class TicketService extends AbstractClassID implements Printable {
 
     }
 
-    public static Ticket getTicketByStadiumSector(char sector) {
+    public static ConcertTicket getTicketByStadiumSector(char sector) {
         return tickets.stream()
                 .filter(ticket -> ticket.getSector() == sector)
                 .findAny()
