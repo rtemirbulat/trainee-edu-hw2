@@ -20,7 +20,7 @@ public class User extends TicketUID implements Printable {
     //
     public void getTicket(ConcertTicket ticket){
         ticketAcquired = true;
-        System.out.println("Ticket acquired: " + ticket.getTicketId());
+        System.out.println("Ticket acquired: " + ticket.getConcertTicketId());
     }
     @Override
     public void printContent() {

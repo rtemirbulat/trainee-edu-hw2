@@ -2,6 +2,7 @@ package com.rtemi.model;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BusTicket extends TicketUID {
     String ticketClass;
@@ -19,8 +20,8 @@ public class BusTicket extends TicketUID {
         this.price = price;
     }
 
-    public BusTicket(int classId, String ticketClass, String ticketType, String startDate, BigDecimal price) {
-        super(classId);
+    public BusTicket(int ticketUid, String ticketClass, String ticketType, String startDate, BigDecimal price) {
+        super(ticketUid);
         this.ticketClass = ticketClass;
         this.ticketType = ticketType;
         this.startDate = startDate;
@@ -57,6 +58,16 @@ public class BusTicket extends TicketUID {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Override
+    public int getTicketUid() {
+        return super.getTicketUid();
+    }
+
+    @Override
+    public void setTicketUid(int ticketUid) {
+        super.setTicketUid(ticketUid);
     }
 
     @Override

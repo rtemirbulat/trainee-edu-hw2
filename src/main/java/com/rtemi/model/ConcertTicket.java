@@ -17,7 +17,7 @@ public class ConcertTicket extends TicketUID implements Printable, Shareable {
     private static final int PRICE_PRECISION = 9;
     private static final int WEIGHT_PRECISION = 3;
 
-    private String ticketId;
+    private String concertTicketId;
     @NullableWarning(key = "Variable [concertHall] is null in [Ticket]!”")
     private String concertHall;
     private int eventCode;
@@ -33,7 +33,7 @@ public class ConcertTicket extends TicketUID implements Printable, Shareable {
     }
 
     public ConcertTicket(String ticketId, String concertHall, int eventCode, boolean isPromo, char sector, BigDecimal maxWeight, BigDecimal ticketPrice) {
-        this.ticketId = ticketId.length() > ID_MAX_DIGITS_ALLOWED ? ticketId.substring(0, ID_MAX_DIGITS_ALLOWED) : ticketId;
+        this.concertTicketId = ticketId.length() > ID_MAX_DIGITS_ALLOWED ? ticketId.substring(0, ID_MAX_DIGITS_ALLOWED) : ticketId;
         this.concertHall = concertHall.length() > HALL_NAME_MAX_CHARS ? concertHall.substring(0, HALL_NAME_MAX_CHARS) : concertHall;
         this.eventCode = Integer.parseInt(String.valueOf(eventCode).substring(0, 3));
         this.isPromo = isPromo;
@@ -50,8 +50,8 @@ public class ConcertTicket extends TicketUID implements Printable, Shareable {
         setTicketPurchaseTime();
     }
 
-    public String getTicketId() {
-        return ticketId;
+    public String getConcertTicketId() {
+        return concertTicketId;
     }
 
     public void setTicketPurchaseTime(){
@@ -80,7 +80,7 @@ public class ConcertTicket extends TicketUID implements Printable, Shareable {
     @Override
     public String toString() {
         return "Ticket " +
-                "ticketId='" + ticketId + '\'' +
+                "concertTicketId='" + concertTicketId + '\'' +
                 ", concertHall - '" + concertHall + '\'' +
                 ", eventCode - " + eventCode +
                 ", ticketPurchaseTime - " +  ticketPurchaseTime +
@@ -116,7 +116,7 @@ public class ConcertTicket extends TicketUID implements Printable, Shareable {
                 time == ticket.time &&
                 isPromo == ticket.isPromo &&
                 sector == ticket.sector &&
-                Objects.equals(ticketId, ticket.ticketId) &&
+                Objects.equals(concertTicketId, ticket.concertTicketId) &&
                 Objects.equals(concertHall, ticket.concertHall) &&
                 Objects.equals(maxWeight, ticket.maxWeight) &&
                 Objects.equals(ticketPrice, ticket.ticketPrice);
@@ -124,6 +124,6 @@ public class ConcertTicket extends TicketUID implements Printable, Shareable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ticketId, concertHall, eventCode, ticketPurchaseTime,time, isPromo, sector, maxWeight, ticketPrice);
+        return Objects.hash(concertTicketId, concertHall, eventCode, ticketPurchaseTime,time, isPromo, sector, maxWeight, ticketPrice);
     }
 }

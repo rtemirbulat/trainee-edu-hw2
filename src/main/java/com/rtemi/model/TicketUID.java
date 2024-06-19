@@ -1,18 +1,20 @@
 package com.rtemi.model;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public abstract class TicketUID {
-    private int classId;
+    private int ticketUid;
     protected TicketUID(){
     }
-    protected TicketUID(int classId) {
-        this.classId = classId;
+    protected TicketUID(int ticketUid) {
+        this.ticketUid = this.ticketUid;
     }
 
-    public int getClassId() {
-        return classId;
+    public int getTicketUid() {
+        return ticketUid;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setTicketUid(int ticketUid) {
+        this.ticketUid = ticketUid;
     }
 }

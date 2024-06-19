@@ -17,7 +17,7 @@ public class Admin extends TicketUID implements Printable {
 
     public void checkTicket(ConcertTicket ticket){
         ticketApproved = true;
-        System.out.println("Checked ticket : " + ticket.getTicketId());
+        System.out.println("Checked ticket : " + ticket.getConcertTicketId());
     }
     @Override
     public void printContent() {

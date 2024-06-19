@@ -24,8 +24,8 @@ public class TicketService extends TicketUID implements Printable {
 
         // Setting ID to ANY class (goal 1)
         TicketService id = new TicketService();
-        id.setClassId(1);
-        System.out.println("class id: id.getClassId()");
+        id.setTicketUid(1);
+        System.out.println("class id: id.getConcertTicketId()");
         System.out.println();
 
 
