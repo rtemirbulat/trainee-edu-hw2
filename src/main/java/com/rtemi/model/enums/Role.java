@@ -1,4 +1,4 @@
-package com.rtemi.model.entity;
+package com.rtemi.model.enums;
 
 public enum Role {
     CLIENT,ADMIN

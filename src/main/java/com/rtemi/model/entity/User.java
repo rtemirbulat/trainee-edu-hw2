@@ -1,10 +1,11 @@
 package com.rtemi.model.entity;
 
 import com.rtemi.interfaces.Printable;
-import com.rtemi.model.AbstractClassID;
-import com.rtemi.model.Ticket;
+import com.rtemi.model.TicketUID;
+import com.rtemi.model.ConcertTicket;
+import com.rtemi.model.enums.Role;
 
-public class User extends AbstractClassID implements Printable {
+public class User extends TicketUID implements Printable {
     final Role role;
     boolean ticketAcquired = false;
     public User(){
@@ -17,9 +18,9 @@ public class User extends AbstractClassID implements Printable {
     }
 
     //
-    public void getTicket(Ticket ticket){
+    public void getTicket(ConcertTicket ticket){
         ticketAcquired = true;
-        System.out.println("Ticket acquired: " + ticket.getTicketId());
+        System.out.println("Ticket acquired: " + ticket.getConcertTicketId());
     }
     @Override
     public void printContent() {
