@@ -15,4 +15,4 @@ jobs:
       - name: Build Project with Gradle
         run: gradle clean build
       - name: Run Application
-        run: java -jar java-trainee-edu/build/libs/java-trainee-edu-1.0-SNAPSHOT.jar
+        run: java -jar build/libs/java-trainee-edu-1.0-SNAPSHOT.jar
