@@ -88,8 +88,7 @@ public class ConcertTicket extends TicketUID implements Printable, Shareable {
                 ", isPromo - " + isPromo +
                 ", sector - " + sector +
                 ", maxWeight - " +  maxWeight.setScale(WEIGHT_PRECISION,RoundingMode.HALF_UP) +
-                ", ticketPrice - " + ticketPrice.setScale(PRICE_PRECISION,RoundingMode.HALF_UP) +
-                '}';
+                ", ticketPrice - " + ticketPrice.setScale(PRICE_PRECISION,RoundingMode.HALF_UP);
     }
 
     @Override
